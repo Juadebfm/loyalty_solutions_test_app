@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import PropTypes from "prop-types"; // Import PropTypes
 
 //Create Context
 export const ProductContext = createContext();
@@ -20,6 +21,11 @@ const ProductProvider = ({ children }) => {
       {children}
     </ProductContext.Provider>
   );
+};
+
+// Define propTypes for ProductProvider
+ProductProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default ProductProvider;

@@ -1,0 +1,38 @@
+:root {
+  /* FontFamily */
+  --inter: "Inter", sans-serif;
+  --inconsolata: "Inconsolata", monospace;
+  /* Colors */
+  --text_color: #191919;
+  --cat_bg: #e73c17;
+  --alert: #e23000;
+  --input_border: #f0f0f0;
+  --footer_bg: #2f333a;
+}
+
+.footer_text {
+  color: rgb(255 255 255);
+  text-align: center;
+}
+
+.footer {
+  background-color: rgb(34 34 34);
+  padding: 25px 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .footer_text {
+    width: 100%;
+  }
+  .container {
+    width: 100%;
+  }
+}

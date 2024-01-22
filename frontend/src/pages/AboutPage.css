@@ -1,0 +1,20 @@
+:root {
+    /* FontFamily */
+    --inter: "Inter", sans-serif;
+    --inconsolata: "Inconsolata", monospace;
+    /* Colors */
+    --text_color: #191919;
+    --cat_bg: #e73c17;
+    --alert: #e23000;
+    --input_border: #f0f0f0;
+    --footer_bg: #2f333a;
+    --footer_bg_faded: #2f333a99;
+  }
+  
+  .aboutPage {
+    padding: 18px 2rem;
+  }
+  
+  .aboutPage dt {
+    font-weight: 700;
+  }

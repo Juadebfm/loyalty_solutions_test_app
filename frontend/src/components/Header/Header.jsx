@@ -1,28 +1,68 @@
+import { useContext } from "react";
+// sidebar context
+import { SidebarContext } from "../../context/SidebarContext";
+// cart context
+import { CartContext } from "../../context/CartContext";
+//import icons
+import { CiShoppingCart } from "react-icons/ci";
+// import Link
+import { NavLink, useLocation } from "react-router-dom";
+
+import "./Header.css";
+import { getCurrentDate } from "../../utils/dateHelper";
+
 const Header = () => {
+  const location = useLocation();
+  const currentDate = getCurrentDate();
+  //header state
+  const { isOpen, setIsOpen } = useContext(SidebarContext);
+  const { itemAmount } = useContext(CartContext);
+
   return (
-    <header
-      className={`${
-        isActive ? "bg-white py-6 shadow-md" : "bg-none py-6"
-      } fixed w-full transition-all z-10`}
-    >
-      <div className="container mx-auto flex items-center justify-between h-full">
-        {/* Logo */}
-        <Link to={"/"}>
-          <div>
-            <img className="w-[40px]" src={Logo} alt="Logo" />
+    <header>
+      <nav>
+        <div className="top_nav">
+          <span>Welcome to Test & Get the best product</span>
+          <span>{currentDate}</span>
+        </div>
+        <div className="mid_nav">
+          <div className="logo">
+            Test<span>.</span>
           </div>
-        </Link>
-        {/* cart */}
-        <div
-          onClick={() => setIsOpen(!isOpen)}
-          className="cursor-pointer flex relative"
-        >
-          <BsBag className="text-2xl" />
-          <div className="bg-red-500 absolute -right-2 -bottom-2 text-[12px] w-[18px] h-[18px] text-white rounded-full flex justify-center items-center">
-            {itemAmount}
+          <div
+            className="cart"
+            onClick={() => {
+              setIsOpen(!isOpen);
+              console.log("Clicked");
+            }}
+          >
+            <div className="cart_items_number">{itemAmount}</div>
+            <CiShoppingCart />
           </div>
         </div>
-      </div>
+        <div className="nav_section">
+          <ul className="nav_items">
+            <li className="nav_item">
+              <NavLink
+                to="/"
+                className={`link ${location.pathname === "/" ? "active" : ""}`}
+              >
+                Home
+              </NavLink>
+            </li>
+            <li className="nav_item">
+              <NavLink
+                to="/about"
+                className={`link ${
+                  location.pathname === "/about" ? "active" : ""
+                }`}
+              >
+                About
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </header>
   );
 };
