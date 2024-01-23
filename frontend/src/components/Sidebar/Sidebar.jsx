@@ -16,6 +16,12 @@ import "./Sidebar.css";
 const Sidebar = () => {
   const { isOpen, handleClose } = useContext(SidebarContext);
   const { cart, clearCart, total, itemAmount } = useContext(CartContext);
+  console.log(itemAmount);
+
+  const handleCheckoutClick = () => {
+    // Close the sidebar when the user clicks on the checkout button
+    handleClose();
+  };
   return (
     <div
       className={`${isOpen ? "sidebar_active" : "sidebar_non_active"} sidebar`}
@@ -23,7 +29,7 @@ const Sidebar = () => {
       <div className="sidebar_container">
         <div className="contents">
           {/* Shopping Cart Title */}
-          <div className="">Shopping Cart ({itemAmount})</div>
+          <div className="">Shopping Cart {itemAmount}</div>
           {/* icons */}
           <div onClick={handleClose} className="back">
             <IoMdArrowForward className="back_icon" />
@@ -42,22 +48,15 @@ const Sidebar = () => {
               <FiTrash2 />
             </div>
           </div>
-          <Link
-            to={"/viewcart"}
-            className="view_cart"
-          >
-            View Cart
-          </Link>
-          <Link
-            to={"/"}
-            className="check_out"
-          >
-            Checkout
-          </Link>
+          <div className="action_btns" onClick={handleCheckoutClick}>
+            <Link to={"/viewcart"} className="check_out">
+              Checkout
+            </Link>
+          </div>
         </div>
       </div>
       {/* Cart Item */}
-      <div className="">
+      <div className="Cart_Item">
         {cart.map((item) => {
           return <CartItem item={item} key={item.id} />;
         })}

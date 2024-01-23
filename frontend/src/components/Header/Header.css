@@ -47,6 +47,11 @@ header {
   font-size: 30px;
 }
 
+.mid_nav .logo > .logo_link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .logo span {
   color: var(--cat_bg);
 }

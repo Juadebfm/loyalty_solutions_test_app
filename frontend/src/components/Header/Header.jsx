@@ -6,7 +6,7 @@ import { CartContext } from "../../context/CartContext";
 //import icons
 import { CiShoppingCart } from "react-icons/ci";
 // import Link
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 import "./Header.css";
 import { getCurrentDate } from "../../utils/dateHelper";
@@ -27,7 +27,9 @@ const Header = () => {
         </div>
         <div className="mid_nav">
           <div className="logo">
-            Test<span>.</span>
+            <Link to="/" className="logo_link">
+              Test<span>.</span>
+            </Link>
           </div>
           <div
             className="cart"

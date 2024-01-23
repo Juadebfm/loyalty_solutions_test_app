@@ -1,9 +1,8 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { CartContext } from "../../context/CartContext";
-//import icons
 import { CiShoppingCart } from "react-icons/ci";
 import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
 import "./Product.css";
 
@@ -11,7 +10,8 @@ const Product = ({ product }) => {
   const { addToCart } = useContext(CartContext);
 
   // Destructure product
-  const { id, title, price, images } = product;
+  // const { id, title, price, category, image } = product;
+  const { id, title, price, image } = product;
 
   return (
     <div className="product_card">
@@ -20,7 +20,8 @@ const Product = ({ product }) => {
           {/* Image */}
           <Link to={`/product/${id}`}>
             <div className="image_overlay">
-              <img className="" src={images[0]} alt="" />
+              {/* Assuming image is a string */}
+              <img className="" src={image} alt="" />
               <div className="overlay">
                 <p>View Details</p>
               </div>
@@ -45,11 +46,12 @@ Product.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
-    category: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    rating: PropTypes.shape({
+      rate: PropTypes.number.isRequired,
+      count: PropTypes.number.isRequired,
     }).isRequired,
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
 };
 

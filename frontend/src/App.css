@@ -17,5 +17,10 @@ body {
   margin: 0;
   box-sizing: border-box;
   font-family: var(--inter);
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+  width: 100vw;
+}
+
+.App {
+  overflow-x: hidden !important;
 }

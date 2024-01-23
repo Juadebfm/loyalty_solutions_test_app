@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import PropTypes from "prop-types"; // Import PropTypes
+import { useEffect } from "react";
 
 //create context
 
@@ -12,6 +13,28 @@ const SidebarProvider = ({ children }) => {
   const handleClose = () => {
     setIsOpen(false);
   };
+
+  // Add a useEffect to handle the body scroll when the sidebar is open or closed
+  useEffect(() => {
+    const handleBodyScroll = () => {
+      if (isOpen) {
+        // If the sidebar is open, disable body scroll
+        document.body.style.overflow = "hidden";
+      } else {
+        // If the sidebar is closed, enable body scroll
+        document.body.style.overflow = "auto";
+      }
+    };
+
+    // Attach the event listener
+    handleBodyScroll();
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
   return (
     <SidebarContext.Provider value={{ isOpen, setIsOpen, handleClose }}>
       {children}

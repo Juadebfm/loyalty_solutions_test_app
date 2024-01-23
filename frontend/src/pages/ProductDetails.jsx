@@ -19,32 +19,26 @@ const ProductDetails = () => {
   });
   // if product is not found
   if (!product) {
-    return (
-      <section className="h-screen justify-center items-center">
-        Loading...
-      </section>
-    );
+    return <section className="">Loading...</section>;
   }
 
   // destructure product
-  const { title, price, description, images, category } = product;
+  const { title, price, description, image, category } = product;
 
-  const { name } = category;
-  console.log(images);
   return (
     <section className="product_details">
       <div className="product_detail">
         <div className="product_details_container">
           {/*image & text*/}
-          <div className="main_img">
-            <img className="main_img" src={images[0]} alt={title} />
+          <div className="">
+            <img className="main_img" src={image} alt={title} />
           </div>
           {/*text*/}
           <div>
             <h1 className="title">{title}</h1>
             <div className="price_container">
               <div className="price">${price}</div>
-              <p className="product_category">{name}</p>
+              <p className="product_category">{category}</p>
             </div>
             <p className="description">{description}</p>
             <button

@@ -11,14 +11,15 @@
 .sidebar {
   position: fixed;
   right: -100%;
-  top: 85px;
+  top: 0%;
   height: 100%;
-  width: 300px; /* Adjust the width as needed */
+  width: 35%; /* Adjust the width as needed */
   background-color: #fff;
   z-index: 999;
   transition: right 0.3s ease;
   border: 1px solid rgba(128, 128, 128, 0.194);
   padding: 25px;
+  overflow-y: scroll;
 }
 
 .sidebar_active {
@@ -74,7 +75,7 @@
 
 .clear_cart {
   cursor: pointer;
-  padding: .5rem;
+  padding: 0.5rem;
   background-color: rgb(244, 63, 94);
   color: white;
   width: 30px;
@@ -89,7 +90,18 @@
 
 .view_cart,
 .check_out {
+  height: 100%;
+  padding: 1rem;
+  width: 100%;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.view_cart:hover,
+.check_out:hover {
+  scale: (1.05);
 }
 
 .view_cart {
@@ -110,4 +122,50 @@
   flex-direction: column;
   row-gap: 0.5rem;
   height: 100%;
+}
+
+.action_btns {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+}
+
+.Cart_Item {
+  padding-bottom: 3rem;
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    right: -150%;
+    width: 80vw;
+  }
+
+  .sidebar_active {
+    right: 0px;
+  }
+
+  .action_btns {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .view_cart,
+  .check_out {
+    width: 80%;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .sidebar {
+    right: -150%;
+    width: 60vw;
+  }
+  .sidebar_active {
+    right: 0px;
+  }
+}
+
+@media (min-width: 901px) {
 }
